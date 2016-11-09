@@ -34,20 +34,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     mTextView = (TextView) findViewById(R.id.textView);
         }
-    
+
                 @Override
                 public void onClick(View v) {
                     if (v.getId() == R.id.button1) {
-                        Log.d("UI_PARTS","おはようございます");
-                        Log.d("UI_PARTS","こんにちは");
-                        Log.d("UI_PARTS","こんばんは");
+                        Log.d("UI_PARTS", "おはようございます");
+                        Log.d("UI_PARTS", "こんにちは");
+                        Log.d("UI_PARTS", "こんばんは");
+                        Log.d("UI_PARTS", ">" + hour + ":" + minute);
 
+
+                        if (hour <= 2 && minute >= 0 && hour >= 9 && minute <= 59) {
+                            Log.d("UI_PARTS", "おはようございます");
+                        }
+
+                        if (hour <= 10 && minute >= 0 && hour >= 17 && minute <= 59) {
+                            Log.d("UI_PARTS", "おはようございます");
+                        }
+                        if (hour <= 18 && minute >= 0 && hour >= 1 && minute <= 59) {
+                            Log.d("UI_PARTS", "こんばんは");
+                        }
+
+
+                    } else if (v.getId() == R.id.button2) {
+                        showTimePickerDialog();
                     }
-                  }else if (v.getId() == R.id.button2) {
-                   showTimePickerDialog();
-                  }
-
-
+                }
 
     private void showTimePickerDialog() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
