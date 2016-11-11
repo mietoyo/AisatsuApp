@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import static jp.techacademy.mie.toyo.aisatsuapp.R.id.textView;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -33,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button2.setOnClickListener(this);
 
 
-        mTextView = (TextView) findViewById(R.id.textView);
+        mTextView = (TextView) findViewById(textView);
     }
 
     @Override
@@ -46,14 +48,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
             if (hour <= 2 && minute >= 0 && hour >= 9 && minute <= 59) {
-                TextView text = (TextView) findViewById("textView"); text.setText("おはようございます");
+                TextView text = (TextView) findViewById(R.id.textView);
+                text.setText("おはようございます");
             }
 
             if (hour <= 10 && minute >= 0 && hour >= 17 && minute <= 59) {
-                TextView text = (TextView)findViewById("textView");text.setText("こんにちは");
+                TextView text = (TextView)findViewById(R.id.textView);
+                text.setText("こんにちは");
             }
             if (hour <= 18 && minute >= 0 && hour >= 1 && minute <= 59) {
-                TextView text = (TextView)findViewById("textView");text.setText("こんばんは");
+                TextView text = (TextView)findViewById(R.id.textView);
+                text.setText("こんばんは");
             }
 
 
