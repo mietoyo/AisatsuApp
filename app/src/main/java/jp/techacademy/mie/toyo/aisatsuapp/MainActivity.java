@@ -3,6 +3,7 @@ package jp.techacademy.mie.toyo.aisatsuapp;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.LoginFilter;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
     TextView mTextView;
@@ -32,34 +33,36 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button2.setOnClickListener(this);
 
 
-                    mTextView = (TextView) findViewById(R.id.textView);
+        mTextView = (TextView) findViewById(R.id.textView);
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button1) {
+           Log.d("UI_PARTS","おはようございます");
+           Log.d("UI_PARTS", "こんにちは");
+            Log.d("UI_PARTS", "こんばんは");
+            Log.d("UI_PARTS", ">" + hour + ":" + minute);
+
+
+            if (hour <= 2 && minute >= 0 && hour >= 9 && minute <= 59) {
+                TextView text = (TextView) findViewById("textView"); text.setText("おはようございます");
+            }
+
+            if (hour <= 10 && minute >= 0 && hour >= 17 && minute <= 59) {
+                TextView text = (TextView)findViewById("textView");text.setText("こんにちは");
+            }
+            if (hour <= 18 && minute >= 0 && hour >= 1 && minute <= 59) {
+                TextView text = (TextView)findViewById("textView");text.setText("こんばんは");
+            }
+
+
+        } else if (v.getId() == R.id.button2) {
+            showTimePickerDialog();
         }
-
-                @Override
-                public void onClick(View v) {
-                    if (v.getId() == R.id.button1) {
-                        Log.d("UI_PARTS", "おはようございます");
-                        Log.d("UI_PARTS", "こんにちは");
-                        Log.d("UI_PARTS", "こんばんは");
-                        Log.d("UI_PARTS", ">" + hour + ":" + minute);
+    }
 
 
-                        if (hour <= 2 && minute >= 0 && hour >= 9 && minute <= 59) {
-                            Log.d("UI_PARTS", "おはようございます");
-                        }
-
-                        if (hour <= 10 && minute >= 0 && hour >= 17 && minute <= 59) {
-                            Log.d("UI_PARTS", "おはようございます");
-                        }
-                        if (hour <= 18 && minute >= 0 && hour >= 1 && minute <= 59) {
-                            Log.d("UI_PARTS", "こんばんは");
-                        }
-
-
-                    } else if (v.getId() == R.id.button2) {
-                        showTimePickerDialog();
-                    }
-                }
 
     private void showTimePickerDialog() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(this,
@@ -67,14 +70,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                         Log.d("UI-PARTS", String.valueOf(hourOfDay) + ":" + String.valueOf(minute));
-                        MainActivity.this.hour=hourOfDay;
-                        MainActivity.this.minute=minute;
+                        MainActivity.this.hour = hourOfDay;
+                        MainActivity.this.minute = minute;
                     }
                 },
 
                 2,
                 00,
                 false);
-                timePickerDialog.show();
-        }
+        timePickerDialog.show();
     }
+}
