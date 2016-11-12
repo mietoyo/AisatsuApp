@@ -47,16 +47,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Log.d("UI_PARTS", ">" + hour + ":" + minute);
 
 
-            if (hour > 2 && hour < 10 ) {
+            if (2 <= hour && hour <= 9 ) {
                 TextView text = (TextView) findViewById(R.id.textView);
                 text.setText("おはようございます");
             }
 
-            if (hour > 10 && hour < 18  ) {
+            if (10 <= hour && hour <= 17 ) {
                 TextView text = (TextView)findViewById(R.id.textView);
                 text.setText("こんにちは");
             }
-            if (hour < 2 || hour > 18 ) {
+            if (18 <= hour || hour <= 1 ) {
                 TextView text = (TextView)findViewById(R.id.textView);
                 text.setText("こんばんは");
             }
